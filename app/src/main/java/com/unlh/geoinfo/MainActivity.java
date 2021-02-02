@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
                 cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
                 startActivityForResult(cameraIntent, IMAGE_REQUEST);
             }
-
         }
     }
 
@@ -64,5 +63,10 @@ public class MainActivity extends AppCompatActivity {
         File imageFile = File.createTempFile(imageName,".jpg", storageDir);
         currentImagePath = imageFile.getAbsolutePath();
         return imageFile;
+    }
+
+    public void settings(View view) {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
     }
 }

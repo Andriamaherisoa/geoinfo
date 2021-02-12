@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">geoinfo</string>
+    <string name="get_location">get location</string>
+    <string name="location">Longitude : %f Latitude : %f</string>
 </resources>

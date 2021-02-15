@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DisplayImage">
+    tools:context=".DisplayImage"
+    android:orientation="vertical">
+
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="4dp"
         android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="608dp"
         android:contentDescription="@string/imageViewDesc"
-        />
+        android:padding="4dp" />
 
     <TextView
         android:id="@+id/text"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:text="Hello World!" />
 
     <Button
         android:id="@+id/location"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="getLocation"
         android:text="@string/get_location" />
 
-</RelativeLayout>
+</LinearLayout>

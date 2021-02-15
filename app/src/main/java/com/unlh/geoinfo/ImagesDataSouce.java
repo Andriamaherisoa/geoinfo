@@ -32,12 +32,12 @@ public class ImagesDataSouce {
         dbHelper.close();
     }
 
-    public Image createImage (String titre, String latitude, String longitude, String imagePath) {
+    public Image createImage (Image image) {
         ContentValues values = new ContentValues();
-        values.put(MySQLiteHelper.COLUMN_TITRE, titre);
-        values.put(MySQLiteHelper.COLUMN_IMAGEPATH, imagePath);
-        values.put(MySQLiteHelper.COLUMN_LAT, latitude);
-        values.put(MySQLiteHelper.COLUMN_LON, longitude);
+        values.put(MySQLiteHelper.COLUMN_TITRE, image.getTitre());
+        values.put(MySQLiteHelper.COLUMN_IMAGEPATH, image.getImagepath());
+        values.put(MySQLiteHelper.COLUMN_LAT, image.getLat());
+        values.put(MySQLiteHelper.COLUMN_LON, image.getLon());
         long insertId = database.insert(MySQLiteHelper.TABLE_IMAGES, null,
                 values);
         Cursor cursor = database.query(MySQLiteHelper.TABLE_IMAGES,
@@ -79,8 +79,8 @@ public class ImagesDataSouce {
         image.setId(cursor.getLong(0));
         image.setTitre(cursor.getString(1));
         image.setImagepath(cursor.getString(2));
-        image.setLon(cursor.getString(3));
-        image.setLat(cursor.getString(4));
+        image.setLon(cursor.getDouble(3));
+        image.setLat(cursor.getDouble(4));
         return image;
     }
 }

@@ -22,8 +22,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + TABLE_IMAGES + "(" + COLUMN_ID
             + " integer primary key autoincrement, " + COLUMN_TITRE
             + " text not null, " + COLUMN_IMAGEPATH
-            + " text not null, " + COLUMN_LON
-            + " text not null, " + COLUMN_LAT
+            + " double not null, " + COLUMN_LON
+            + " double not null, " + COLUMN_LAT
             + " text not null"+ ");";
 
     public MySQLiteHelper(Context context) {

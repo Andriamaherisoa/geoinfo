@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -31,6 +32,7 @@ import static com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCU
 public class DisplayImage extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
     ImageView imageView;
+    EditText titreEditText;
     private static final int FINE_LOCATION_PERMISSION_CODE = 100;
     private static final int COARSE_LOCATION_PERMISSION_CODE = 101;
 
@@ -45,6 +47,7 @@ public class DisplayImage extends AppCompatActivity implements ActivityCompat.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_image);
         imageView = findViewById(R.id.imageView);
+        titreEditText = findViewById(R.id.titreEditText);
 
         Bitmap bitmap = BitmapFactory.decodeFile(getIntent().getStringExtra("image_path"));
         imageView.setImageBitmap(bitmap);
@@ -93,6 +96,11 @@ public class DisplayImage extends AppCompatActivity implements ActivityCompat.On
                     System.out.println("latitude : " + location.getLatitude() + " longitude : " + location.getLongitude());
                     System.out.println(imagePath);
                     // TODO: send data to database
+                    String titre = titreEditText.getText().toString();
+                    double latitude = location.getLatitude();
+                    double longitude = location.getLongitude();
+                    Image newImage = dataSouce.createImage(new Image(titre, latitude, longitude, imagePath));
+                    // if newImage not null
                 }
             }
         });
@@ -142,14 +150,6 @@ public class DisplayImage extends AppCompatActivity implements ActivityCompat.On
                         .show();
             }
         }
-    }
-
-    public void addImage(View view) {
-        String titre = "titre test";
-        String latitude = "38.8951";
-        String longitude = "-77.0364";
-        String imagePath = "/path/to/image";
-        Image image = dataSouce.createImage(titre, latitude, longitude, imagePath);
     }
 
     protected void onResume() {

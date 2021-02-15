@@ -87,4 +87,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
+
+    public void imageList(View view) {
+        Intent intent = new Intent(this, ImagesListActivity.class);
+        startActivity(intent);
+    }
 }

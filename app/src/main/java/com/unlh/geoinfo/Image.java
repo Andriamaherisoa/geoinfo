@@ -1,11 +1,11 @@
 package com.unlh.geoinfo;
 
-public class Images {
+public class Image {
 
     private long id;
     private String titre;
     private String imagepath;
-    private long lon, lat;
+    private String lon, lat;
 
     public long getId() {
         return id;
@@ -31,19 +31,19 @@ public class Images {
         this.imagepath = imagepath;
     }
 
-    public long getLon() {
+    public String getLon() {
         return lon;
     }
 
-    public void setLon(long lon) {
+    public void setLon(String lon) {
         this.lon = lon;
     }
 
-    public long getLat() {
+    public String getLat() {
         return lat;
     }
 
-    public void setLat(long lat) {
+    public void setLat(String lat) {
         this.lat = lat;
     }
 

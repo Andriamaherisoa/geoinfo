@@ -93,14 +93,10 @@ public class DisplayImage extends AppCompatActivity implements ActivityCompat.On
             @Override
             public void onSuccess(Location location) {
                 if (location != null) {
-                    System.out.println("latitude : " + location.getLatitude() + " longitude : " + location.getLongitude());
-                    System.out.println(imagePath);
-                    // TODO: send data to database
                     String titre = titreEditText.getText().toString();
                     double latitude = location.getLatitude();
                     double longitude = location.getLongitude();
-                    Image newImage = dataSouce.createImage(new Image(titre, latitude, longitude, imagePath));
-                    // if newImage not null
+                    dataSouce.createImage(new Image(titre, latitude, longitude, imagePath));
                     navigateToMain();
                 }
             }
@@ -119,7 +115,7 @@ public class DisplayImage extends AppCompatActivity implements ActivityCompat.On
 
             // Requesting the permission
             ActivityCompat.requestPermissions(DisplayImage.this,
-                    new String[] { permission },
+                    new String[]{permission},
                     requestCode);
         }
     }
@@ -134,22 +130,19 @@ public class DisplayImage extends AppCompatActivity implements ActivityCompat.On
                         "Fine Location Permission Granted",
                         Toast.LENGTH_SHORT)
                         .show();
-            }
-            else {
+            } else {
                 Toast.makeText(DisplayImage.this,
                         "Fine Location Permission Denied",
                         Toast.LENGTH_SHORT)
                         .show();
             }
-        }
-        else if (requestCode == COARSE_LOCATION_PERMISSION_CODE) {
+        } else if (requestCode == COARSE_LOCATION_PERMISSION_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(DisplayImage.this,
                         "Coarse Location Permission Granted",
                         Toast.LENGTH_SHORT)
                         .show();
-            }
-            else {
+            } else {
                 Toast.makeText(DisplayImage.this,
                         "Coarse Location Permission Denied",
                         Toast.LENGTH_SHORT)
@@ -163,7 +156,7 @@ public class DisplayImage extends AppCompatActivity implements ActivityCompat.On
         super.onResume();
     }
 
-    protected void onPause () {
+    protected void onPause() {
         dataSouce.close();
         super.onPause();
     }

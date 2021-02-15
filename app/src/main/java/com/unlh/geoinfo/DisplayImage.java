@@ -101,9 +101,15 @@ public class DisplayImage extends AppCompatActivity implements ActivityCompat.On
                     double longitude = location.getLongitude();
                     Image newImage = dataSouce.createImage(new Image(titre, latitude, longitude, imagePath));
                     // if newImage not null
+                    navigateToMain();
                 }
             }
         });
+    }
+
+    void navigateToMain() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     // Function to check and request permission.

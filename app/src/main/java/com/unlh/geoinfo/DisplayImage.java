@@ -1,5 +1,6 @@
 package com.unlh.geoinfo;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -13,9 +14,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -23,6 +22,8 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.CancellationToken;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.OnTokenCanceledListener;
+
+import java.io.File;
 
 import static com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY;
 
@@ -33,8 +34,9 @@ public class DisplayImage extends AppCompatActivity implements ActivityCompat.On
     private static final int FINE_LOCATION_PERMISSION_CODE = 100;
     private static final int COARSE_LOCATION_PERMISSION_CODE = 101;
 
-    private FusedLocationProviderClient fusedLocationClient;
+    private String imagePath;
 
+    private FusedLocationProviderClient fusedLocationClient;
     @RequiresApi(api = Build.VERSION_CODES.P)
 
     @Override
@@ -45,15 +47,17 @@ public class DisplayImage extends AppCompatActivity implements ActivityCompat.On
 
         Bitmap bitmap = BitmapFactory.decodeFile(getIntent().getStringExtra("image_path"));
         imageView.setImageBitmap(bitmap);
+        this.imagePath = getIntent().getStringExtra("image_path");
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
+        getLocation();
     }
 
-    public void getLocation(View view) {
+    public void getLocation() {
         checkPermission(Manifest.permission.ACCESS_FINE_LOCATION, FINE_LOCATION_PERMISSION_CODE);
         checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION, COARSE_LOCATION_PERMISSION_CODE);
 
-        // TODO: Cancellation token
         fusedLocationClient.getCurrentLocation(PRIORITY_HIGH_ACCURACY, new CancellationToken() {
             @Override
             public boolean isCancellationRequested() {
@@ -65,15 +69,27 @@ public class DisplayImage extends AppCompatActivity implements ActivityCompat.On
             public CancellationToken onCanceledRequested(@NonNull OnTokenCanceledListener onTokenCanceledListener) {
                 return null;
             }
-        }).addOnSuccessListener(this, new OnSuccessListener<Location>() {
+        });
+    }
+
+    public void cancel(View view) {
+        File file = new File(imagePath);
+        file.delete();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void sendData(View view) {
+        checkPermission(Manifest.permission.ACCESS_FINE_LOCATION, FINE_LOCATION_PERMISSION_CODE);
+        checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION, COARSE_LOCATION_PERMISSION_CODE);
+
+        fusedLocationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
-                // Got last known location. In some rare situations this can be null.
                 if (location != null) {
-                    TextView tv = findViewById(R.id.text);
-                    tv.setText(getString(R.string.location, location.getLongitude(), location.getLatitude()));
-                } else {
-                    System.out.println("location null");
+                    System.out.println("latitude : " + location.getLatitude() + " longitude : " + location.getLongitude());
+                    System.out.println(imagePath);
+                    // TODO: send data to database
                 }
             }
         });
@@ -88,12 +104,6 @@ public class DisplayImage extends AppCompatActivity implements ActivityCompat.On
             ActivityCompat.requestPermissions(DisplayImage.this,
                     new String[] { permission },
                     requestCode);
-        }
-        else {
-            Toast.makeText(DisplayImage.this,
-                    "Permission already granted",
-                    Toast.LENGTH_SHORT)
-                    .show();
         }
     }
 

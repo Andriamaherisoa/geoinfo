@@ -10,21 +10,31 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="608dp"
+        android:layout_height="543dp"
         android:contentDescription="@string/imageViewDesc"
         android:padding="4dp" />
 
-    <TextView
-        android:id="@+id/text"
+    <EditText
+        android:id="@+id/editTextTextPersonName2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/textView"
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="getLocation"
-        android:text="@string/get_location" />
+        android:onClick="sendData"
+        android:text="@string/send_data" />
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="cancel"
+        android:text="@string/cancel" />
 
 </LinearLayout>

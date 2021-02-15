@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
@@ -49,7 +50,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void displayImage(View view) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == IMAGE_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                displayImage();
+            } else if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(this, "CANCELED ", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    public void displayImage() {
         Intent intent = new Intent(this, DisplayImage.class);
         intent.putExtra("image_path", currentImagePath);
         startActivity(intent);

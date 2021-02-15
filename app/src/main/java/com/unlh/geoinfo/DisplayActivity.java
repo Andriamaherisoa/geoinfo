@@ -23,7 +23,7 @@ import com.google.android.gms.tasks.OnTokenCanceledListener;
 import static com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY;
 
 
-public class MainActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
+public class DisplayActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
     private static final int FINE_LOCATION_PERMISSION_CODE = 100;
     private static final int COARSE_LOCATION_PERMISSION_CODE = 101;
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_display_image);
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
     }
@@ -71,16 +71,16 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
 
     // Function to check and request permission.
     public void checkPermission(String permission, int requestCode) {
-        if (ActivityCompat.checkSelfPermission(MainActivity.this, permission)
+        if (ActivityCompat.checkSelfPermission(DisplayActivity.this, permission)
                 == PackageManager.PERMISSION_DENIED) {
 
             // Requesting the permission
-            ActivityCompat.requestPermissions(MainActivity.this,
+            ActivityCompat.requestPermissions(DisplayActivity.this,
                     new String[] { permission },
                     requestCode);
         }
         else {
-            Toast.makeText(MainActivity.this,
+            Toast.makeText(DisplayActivity.this,
                     "Permission already granted",
                     Toast.LENGTH_SHORT)
                     .show();
@@ -93,13 +93,13 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
 
         if (requestCode == FINE_LOCATION_PERMISSION_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(MainActivity.this,
+                Toast.makeText(DisplayActivity.this,
                         "Fine Location Permission Granted",
                         Toast.LENGTH_SHORT)
                         .show();
             }
             else {
-                Toast.makeText(MainActivity.this,
+                Toast.makeText(DisplayActivity.this,
                         "Fine Location Permission Denied",
                         Toast.LENGTH_SHORT)
                         .show();
@@ -107,13 +107,13 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         }
         else if (requestCode == COARSE_LOCATION_PERMISSION_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(MainActivity.this,
+                Toast.makeText(DisplayActivity.this,
                         "Coarse Location Permission Granted",
                         Toast.LENGTH_SHORT)
                         .show();
             }
             else {
-                Toast.makeText(MainActivity.this,
+                Toast.makeText(DisplayActivity.this,
                         "Coarse Location Permission Denied",
                         Toast.LENGTH_SHORT)
                         .show();

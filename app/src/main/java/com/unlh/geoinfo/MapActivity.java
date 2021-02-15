@@ -47,7 +47,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         map.moveCamera(CameraUpdateFactory.newLatLng(Pos));
 
         for(Image i: images) {
-            Bitmap bitmap = BitmapFactory.decodeFile(getIntent().getStringExtra("image_path"));
+            Bitmap bitmap = BitmapFactory.decodeFile(i.getImagepath());
             Bitmap smallMarker = Bitmap.createScaledBitmap(bitmap, 84, 84, false);
             LatLng imageLatLng = new LatLng(i.getLat(), i.getLon());
             map.addMarker(new MarkerOptions()

@@ -1,6 +1,6 @@
 package com.unlh.geoinfo;
 
-public class Images {
+public class Image {
 
     private long id;
     private String titre;
@@ -35,7 +35,7 @@ public class Images {
         return lon;
     }
 
-    public void setLon(long lon) {
+    public void setLon(String lon) {
         this.lon = lon;
     }
 
@@ -43,7 +43,7 @@ public class Images {
         return lat;
     }
 
-    public void setLat(long lat) {
+    public void setLat(String lat) {
         this.lat = lat;
     }
 

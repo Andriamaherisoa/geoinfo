@@ -27,9 +27,14 @@
     <string name="storage_title">Default storage</string>
     <string name="display_map">Display map</string>
 
-    <string name="get_location">get location</string>
+    <string name="send_data">Enregistrer</string>
     <string name="location">Longitude : %f Latitude : %f</string>
+
     <string name="add_image">Add image</string>
     <string name="list_images">List all images</string>
+
+    <string name="textImage">%s</string>
+    <string name="textView">Ajouter un texte à votre image</string>
+    <string name="cancel">Annuler</string>
 
 </resources>

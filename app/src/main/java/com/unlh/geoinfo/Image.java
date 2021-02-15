@@ -5,7 +5,7 @@ public class Image {
     private long id;
     private String titre;
     private String imagepath;
-    private long lon, lat;
+    private String lon, lat;
 
     public long getId() {
         return id;
@@ -31,7 +31,7 @@ public class Image {
         this.imagepath = imagepath;
     }
 
-    public long getLon() {
+    public String getLon() {
         return lon;
     }
 
@@ -39,7 +39,7 @@ public class Image {
         this.lon = lon;
     }
 
-    public long getLat() {
+    public String getLat() {
         return lat;
     }
 

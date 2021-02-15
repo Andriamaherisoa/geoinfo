@@ -29,5 +29,6 @@
 
     <string name="get_location">get location</string>
     <string name="location">Longitude : %f Latitude : %f</string>
+    <string name="add_image">Add image</string>
 
 </resources>

@@ -34,6 +34,7 @@ public class DisplayImage extends AppCompatActivity implements ActivityCompat.On
     private static final int COARSE_LOCATION_PERMISSION_CODE = 101;
 
     private FusedLocationProviderClient fusedLocationClient;
+    private ImagesDataSouce dataSouce;
 
     @RequiresApi(api = Build.VERSION_CODES.P)
 
@@ -47,6 +48,8 @@ public class DisplayImage extends AppCompatActivity implements ActivityCompat.On
         imageView.setImageBitmap(bitmap);
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        dataSouce = new ImagesDataSouce(this);
+        dataSouce.open();
     }
 
     public void getLocation(View view) {
@@ -129,5 +132,23 @@ public class DisplayImage extends AppCompatActivity implements ActivityCompat.On
                         .show();
             }
         }
+    }
+
+    public void addImage(View view) {
+        String titre = "titre test";
+        String latitude = "38.8951";
+        String longitude = "-77.0364";
+        String imagePath = "/path/to/image";
+        Image image = dataSouce.createImage(titre, latitude, longitude, imagePath);
+    }
+
+    protected void onResume() {
+        dataSouce.open();
+        super.onResume();
+    }
+
+    protected void onPause () {
+        dataSouce.close();
+        super.onPause();
     }
 }

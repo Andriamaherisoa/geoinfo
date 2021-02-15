@@ -1,10 +1,11 @@
 package com.unlh.geoinfo;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+
+import com.unlh.geoinfo.dao.ImagesDataSouce;
+import com.unlh.geoinfo.model.Image;
 
 import java.util.List;
 

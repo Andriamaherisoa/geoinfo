@@ -1,4 +1,4 @@
-package com.unlh.geoinfo;
+package com.unlh.geoinfo.helper;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

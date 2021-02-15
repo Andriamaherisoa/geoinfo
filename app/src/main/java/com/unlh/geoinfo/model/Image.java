@@ -1,4 +1,4 @@
-package com.unlh.geoinfo;
+package com.unlh.geoinfo.model;
 
 public class Image {
 

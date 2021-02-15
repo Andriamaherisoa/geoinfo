@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,15 +13,16 @@
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="-46dp"
         tools:layout_editor_absoluteY="54dp" />
-
     <Button
-        android:layout_width="85dp"
-        android:layout_height="90dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:background="@drawable/circle"
         android:drawableTop="@drawable/photo"
-        android:paddingTop="20dp"
+        android:paddingTop="10dp"
         android:textColor="#fff"
-        tools:layout_editor_absoluteX="292dp"
-        tools:layout_editor_absoluteY="679dp" />
+        android:layout_gravity="bottom|right"
+        android:layout_margin="15dp"
+        android:onClick="captureImage"
+        />
 
-</RelativeLayout>
+</FrameLayout>

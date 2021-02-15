@@ -23,6 +23,8 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.CancellationToken;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.OnTokenCanceledListener;
+import com.unlh.geoinfo.dao.ImagesDataSouce;
+import com.unlh.geoinfo.model.Image;
 
 import java.io.File;
 
@@ -81,7 +83,7 @@ public class DisplayImage extends AppCompatActivity implements ActivityCompat.On
     public void cancel(View view) {
         File file = new File(imagePath);
         file.delete();
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MapActivity.class);
         startActivity(intent);
     }
 
@@ -104,7 +106,7 @@ public class DisplayImage extends AppCompatActivity implements ActivityCompat.On
     }
 
     void navigateToMain() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MapActivity.class);
         startActivity(intent);
     }
 

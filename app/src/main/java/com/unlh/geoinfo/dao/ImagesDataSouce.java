@@ -1,10 +1,13 @@
-package com.unlh.geoinfo;
+package com.unlh.geoinfo.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.unlh.geoinfo.helper.MySQLiteHelper;
+import com.unlh.geoinfo.model.Image;
 
 import java.util.ArrayList;
 import java.util.List;

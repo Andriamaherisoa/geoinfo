@@ -32,12 +32,11 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name=".MapActivity" />
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity android:name=".DisplayImage" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MapActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

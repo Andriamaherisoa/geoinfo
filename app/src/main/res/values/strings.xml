@@ -24,4 +24,5 @@
 
     <!-- Storage Preferences -->
     <string name="storage_title">Default storage</string>
+    <string name="display_map">Display map</string>
 </resources>

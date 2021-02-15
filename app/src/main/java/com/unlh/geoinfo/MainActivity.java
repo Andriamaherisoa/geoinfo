@@ -55,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void displayMap(View view) {
+        Intent intent = new Intent(this, MapActivity.class);
+        startActivity(intent);
+    }
+
     private File getImageFile () throws IOException {
         String timestamp = new SimpleDateFormat("yyyyMMDD_HHmmss").format(new Date());
         String imageName = "jpg_" + timestamp + "_";

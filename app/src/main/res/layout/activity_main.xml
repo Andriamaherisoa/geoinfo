@@ -18,15 +18,6 @@
     <Button
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="@string/display_image"
-        android:onClick="displayImage"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="55dp"
-        />
-
-    <Button
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
         android:text="@string/display_map"
         android:onClick="displayMap"
         android:layout_gravity="center_horizontal"
